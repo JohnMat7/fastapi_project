@@ -46,13 +46,13 @@ def sleep_2():
 # Asynchronous endpoint (but using time.sleep, which is blocking)
 @app.get("/async")
 async def sleep_3():
-    time.sleep(7)  # This is a blocking sleep, so it negates async advantages
+    time.sleep(5)  # This is a blocking sleep, so it negates async advantages
     return {"message": "This is async without await, but still blocks"}
 
 # Asynchronous endpoint (using asyncio.sleep, which is non-blocking)
 @app.get("/async_await")
 async def sleep_4():
-    await asyncio.sleep(10)  # This non-blocking sleep allows other tasks to run
+    await asyncio.sleep(5)  # This non-blocking sleep allows other tasks to run
     return {"message": "This is async with await, non-blocking"}
 
 if __name__ == "__main__":
