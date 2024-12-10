@@ -55,5 +55,23 @@ async def sleep_4():
     await asyncio.sleep(5)  # This non-blocking sleep allows other tasks to run
     return {"message": "This is async with await, non-blocking"}
 
+
+
+
+@app.get("/blog/{id}")
+def show(id:int) :
+    return {"data id" : id}
+
+@app.get("/blog")
+def published_blog(limit , published):
+    if published:
+        return {'data' : f'{limit} published blogs from db'}
+
+
+@app.get('/blog/{id}/comments')
+def comments(id : int) :
+    return {"data" : {'1' , '2'}}
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
